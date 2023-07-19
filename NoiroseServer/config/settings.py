@@ -84,26 +84,26 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "noise_db",                      # DB이름
-        "USER": "admin",
-        "PASSWORD": "admin123",
-        "HOST": "noiroze-db.csrccogv80xg.ap-northeast-2.rds.amazonaws.com",
-        "PORT": "3306",
-    }
-}                # RDS의 MySQL DB 사용 설정.
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "noise_db",                      # DB이름
+#         "USER": "admin",
+#         "PASSWORD": "admin123",
+#         "HOST": "noiroze-db.csrccogv80xg.ap-northeast-2.rds.amazonaws.com",
+#         "PORT": "3306",
+#     }
+# }                # RDS의 MySQL DB 사용 설정.
 
 
-'''
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-'''
+
 
 
 # Password validation

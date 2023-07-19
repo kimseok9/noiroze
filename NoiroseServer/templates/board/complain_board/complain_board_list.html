@@ -16,6 +16,8 @@
                 <!-- 게시글 목록 -->
                 <div class="container mt-5">
                     <h2>민원접수 게시판</h2>
+                    <form id="TokenForm" method="post" style="display:none;">
+                    {% csrf_token %}
                     <table class="table table-striped mt-3">
                         <thead>
                             <tr>
@@ -43,7 +45,8 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                    <!-- <a href="{% url 'main:create_complain_board' %}" class="btn btn-primary mb-3">게시글 작성</a> -->
+                    <a href="{% url 'main:create_complain_board' %}" class="btn btn-primary mb-3">게시글 작성</a>
+                    </form>
                 </div>
 
                 <!-- 페이지네이션 -->

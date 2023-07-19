@@ -1,10 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from django.http import JsonResponse, HttpResponseNotAllowed
-from django.views.decorators.csrf import csrf_exempt
-from django.db.models import Q, Count
-from django.core.paginator import Paginator
 from ..models import *
-from ..forms import ComplainBoardForm, AnswerForm
+from ..forms import AnswerForm
 from rest_framework.authtoken.models import Token
 from django.contrib import messages
 
@@ -37,6 +33,8 @@ def answer_update(request, answer_id):
 
     return render(request, 'board/complain_board/update_answer.html', {'form': form, 'answer_id': answer_id})
 
+
+# 컴플레인 게시판에서 답변을 생성하는 함수
 def answer_create(request, question_id):
     question = get_object_or_404(ComplainBoard, pk=question_id)
     form = AnswerForm()
@@ -66,7 +64,7 @@ def answer_create(request, question_id):
 
     context = {'question': question, 'form': form}
     return render(request, 'board/complain_board/complain_board_detail.html', context)
-##################################################################################################################################################################
+
 
 def answer_delete(request, question_id, answer_id):
     if request.method == "POST":

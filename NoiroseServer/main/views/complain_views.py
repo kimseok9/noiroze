@@ -1,10 +1,8 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from django.http import JsonResponse, HttpResponseNotAllowed
-from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q, Count
 from django.core.paginator import Paginator
 from ..models import *
-from ..forms import ComplainBoardForm, AnswerForm
+from ..forms import ComplainBoardForm
 from rest_framework.authtoken.models import Token
 from django.contrib import messages
 

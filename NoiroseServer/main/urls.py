@@ -35,7 +35,7 @@ urlpatterns = [
     
     # 커뮤니티 보드
     path('community_board_list/', community_views.community_board_list, name='community_board_list'), # 게시판 리스트
-    # path('create_community_board/', community_views.create_community_board, name='create_community_board'), # 게시글 추가(테스트용, 현재 사용X)
+    path('create_community_board/', community_views.question_create_Cp, name='create_community_board'), # 게시글 추가(테스트용, 현재 사용X)
     path('community_board_detail/<int:pk>/', community_views.community_board_detail, name='community_board_detail'), # 게시글 제목 클릭시 이동되는 템플릿
 
 

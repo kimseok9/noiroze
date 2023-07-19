@@ -1,14 +1,10 @@
-from django.shortcuts import render,redirect, get_object_or_404
-from django.http import JsonResponse, HttpResponseNotAllowed
-from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render,get_object_or_404, redirect
 from django.db.models import Q, Count
 from django.core.paginator import Paginator
 from ..models import *
-from ..forms import ComplainBoardForm, AnswerForm
 from rest_framework.authtoken.models import Token
+from ..forms import ComplainBoardForm
 from django.contrib import messages
-
-
 # 커뮤니티 게시판 리스트 
 def community_board_list(request):
     
@@ -47,25 +43,25 @@ def community_board_list(request):
     return render(request, 'board/community_board/community_board_list.html', context)
 
 
-# def question_create_Cp(request):
-#     if request.method == 'POST':
-#         form = ComplainBoardForm(request.POST)
-#         if form.is_valid():
-#             new_board = form.save(commit=False)
-#             # 현재 로그인된 사용자를 author에 저장
-#             token_key = request.COOKIES.get('auth-token')   # 쿠키에서 토큰 가져오기
-#             try:
-#                 token = Token.objects.get(key=token_key)    # 토큰으로 사용자 정보 가져오기
-#             except Token.DoesNotExist:
-#                 messages.error(request, '로그인이 필요합니다.')
-#                 return redirect('/common/login/')
-#             new_board.author = token.user
-#             new_board.save()
-#             return redirect('/main/community_board_list/')
-#     else:
-#         form = ComplainBoardForm()
+def question_create_Cp(request):
+    if request.method == 'POST':
+        form = ComplainBoardForm(request.POST)
+        if form.is_valid():
+            new_board = form.save(commit=False)
+            # 현재 로그인된 사용자를 author에 저장
+            token_key = request.COOKIES.get('auth-token')   # 쿠키에서 토큰 가져오기
+            try:
+                token = Token.objects.get(key=token_key)    # 토큰으로 사용자 정보 가져오기
+            except Token.DoesNotExist:
+                messages.error(request, '로그인이 필요합니다.')
+                return redirect('/common/login/')
+            new_board.author = token.user
+            new_board.save()
+            return redirect('/main/community_board_list/')
+    else:
+        form = ComplainBoardForm()
         
-#     return render(request, 'board/community_board/create_community_board.html', {'form': form})
+    return render(request, 'board/community_board/create_community_board.html', {'form': form})
 
 
 # 커뮤니티 게시판 글 제목을 눌렀을 때 이동되는 화면
